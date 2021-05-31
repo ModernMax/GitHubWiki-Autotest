@@ -30,7 +30,13 @@ public class GitHubWikiAutotest {
         $("#wiki-wrapper h1").shouldHave(text("SoftAssertions"));
         $(".markdown-body").shouldHave(text("Using JUnit5 extend test class:"));
     }
+
+    @Test
+    void findPages3() {
+        $(byLinkText("Wiki")).click();
+        $(".js-wiki-more-pages-link").click();
+        $$(".wiki-more-pages").find(text("SoftAssertions")).click();
+        $$("#wiki-body").findBy(text("Using JUnit5 extend test class:")).shouldBe(visible);
+    }
 }
-
-
 
