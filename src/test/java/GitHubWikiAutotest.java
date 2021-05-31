@@ -15,17 +15,13 @@ public class GitHubWikiAutotest {
     }
 
     @Test
-
     void findPages1() {
-
-
         $(byText("Wiki")).click();
         $(byText("Soft assertions")).shouldBe(visible).click();
         $$("#wiki-body").findBy(text("Using JUnit5 extend test class:")).shouldBe(visible);
     }
 
     @Test
-
     void findPages2() {
         $("nav[aria-label='Repository']").$("ul li", 4).click();
         $("#wiki-content").shouldHave(text("Welcome to the selenide wiki!"));
