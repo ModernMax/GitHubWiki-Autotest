@@ -11,13 +11,14 @@ public class GitHubWikiAutotest {
     static void setUpConfig() {
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
+        open("https://github.com/selenide/selenide");
     }
 
     @Test
 
     void findPages1() {
 
-        open("https://github.com/selenide/selenide");
+
         $(byText("Wiki")).click();
         $(byText("Soft assertions")).shouldBe(visible).click();
         $$("#wiki-body").findBy(text("Using JUnit5 extend test class:")).shouldBe(visible);
@@ -26,7 +27,6 @@ public class GitHubWikiAutotest {
     @Test
 
     void findPages2() {
-        open("https://github.com/selenide/selenide");
         $("nav[aria-label='Repository']").$("ul li", 4).click();
         $("#wiki-content").shouldHave(text("Welcome to the selenide wiki!"));
         //$(byLinkText("Soft assertions")).click();
